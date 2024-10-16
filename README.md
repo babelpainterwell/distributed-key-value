@@ -16,11 +16,15 @@ The following principles are ensured:
 
 - **Client Clerk**: encapsulates the client's interaction with the server. It sends RPCs (Remote Procedure Calls) to the server and handles retries in case of failures.
 - **Server**: processes incoming client requests, maintains the key/value store, and ensures consistency and reliability.
-- **Duplicate Detection**: detects and ignores duplicate requests (eg. due to client retries) to prevent executing the same operation multiple times.
+- **Duplicate Detection**: detects and ignores duplicate requests (eg. due to client retries) to prevent executing the same operation multiple times by using `ClientID` and `SeqNum`.
 - **Network Failures Handling**: handles scenarios where messages (requests or replies) are lost due to network issues.
 
 ### Challenges
 
-- The system should work correctlt even the network is unreliable and messages can be lost.
+- The system should work correctly even the network is unreliable and messages can be lost.
 - Concurrent operations from multiple clients can be handled.
 - Duplicate requests should be detected by maintaining the state on the server.
+
+### Testing
+
+Since this project originates from Lab 2 of MIT 6.5840 Distributed Systems, the lab itself includes test cases and files provided by the MIT faculty and staff. However, to deepen my understanding of the concepts involved in this project, I'm writing my own test files.
