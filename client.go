@@ -38,6 +38,10 @@ func (ck *Clerk) Get(key string) string {
 
 	for {
 		ok := ck.server.Call("KVServer.Get", &args, &reply)
+
+		// Time-out? - prevent from getting stuck if the server is not responsive
+		// Not necessary, Call will return ok == false if the server doesn't respond within a certain time frame. 
+
 		if ok {
 			return reply.Value
 		}
